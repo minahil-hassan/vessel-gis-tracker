@@ -1,0 +1,38 @@
+.layers-backdrop {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  width: 240px;
+  z-index: 1200;
+}
+.layers-popup {
+  padding: 16px;
+  background: linear-gradient(145deg, rgba(10,10,20,0.9), rgba(20,20,30,0.85));
+  border: 1px solid rgba(0,255,255,0.2);
+  border-radius: 10px;
+  backdrop-filter: blur(8px);
+  color: #fff;
+  width: 50%;
+}
+.layers-popup h4 {
+  margin: 0 0 8px;
+  color: #ffaa33;
+  font-size: 14px;
+}
+.layers-list { list-style:none; padding:0; margin:0 0 12px; }
+.layers-list li { margin:6px 0; }
+.layers-buttons {
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+}
+.btn-clear {
+  background:#333; color:#fff;
+  padding:6px 10px; border:none; border-radius:4px;
+  cursor:pointer;
+}
+.btn-orange {
+  background:#ff6600; color:#fff;
+  padding:6px 10px; border:none; border-radius:4px;
+  font-weight:bold; cursor:pointer;
+}

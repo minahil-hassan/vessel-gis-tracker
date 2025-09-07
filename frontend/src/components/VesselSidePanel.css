@@ -1,0 +1,273 @@
+/* VesselSidePanel.css */
+
+/* --------------------------------------------------
+   PANEL LAYOUT
+   -------------------------------------------------- */
+.side-panel {
+  position: fixed;
+  top: 64px;                /* below the header */
+  right: 0;
+  width: 360px;                     /* slightly wider */
+  /* height: 100%; */
+  height: calc(100% - 64px);      /* full height minus header */
+  padding: 0;                       /* we’ll pad inside the glass */
+  z-index: 1000;
+  /* background: rgba(0, 0, 0, 0.3);   subtle outer backdrop */
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+/* The “glass” card */
+.side-panel .popup-glass {
+  position: relative;               /* for absolute-close */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;                    /* more breathing room */
+  margin: 16px;                     /* inset from edges */
+  background: linear-gradient(
+    145deg,
+    rgba(10, 10, 20, 0.9),
+    rgba(20, 20, 30, 0.85)
+  );
+  border-radius: 16px;
+  border-left: 1px solid rgba(0, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  color: #fff;                      /* default text */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-y: auto;
+}
+
+.side-panel--dashboard {
+  width: 40%;
+  
+}
+
+/* --------------------------------------------------
+   CLOSE BUTTON
+   -------------------------------------------------- */
+.side-panel .popup-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  line-height: 1;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.side-panel .popup-close:hover {
+  color: #ffaa33;
+}
+
+/* --------------------------------------------------
+   HEADER (FLAG + TEXT)
+   -------------------------------------------------- */
+.side-panel .popup-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.side-panel .flag-icon {
+  width: 36px;
+  height: 24px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+}
+.side-panel .ship-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffaa33;
+}
+.side-panel .ship-type {
+  font-size: 14px;
+  color: #ccc;
+  margin-top: 2px;
+}
+
+/* --------------------------------------------------
+   IMAGE
+   -------------------------------------------------- */
+.side-panel .popup-image-container {
+  margin: 16px 0;
+  text-align: center;
+}
+.side-panel .vessel-image {
+  width: 100%;
+  max-height: 140px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #111;
+}
+
+/* --------------------------------------------------
+   METADATA GRID
+   -------------------------------------------------- */
+.side-panel .popup-table {
+  width: 100%;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  row-gap: 12px;
+  column-gap: 16px;
+}
+.side-panel .popup-table td {
+  padding: 0;
+  vertical-align: top;
+  color: #ddd;
+}
+.side-panel .popup-table td:first-child {
+  font-weight: 500;
+  color: #aaa;
+}
+.side-panel .popup-table td strong {
+  color: #fff;
+}
+
+/* --------------------------------------------------
+   PORT CALLS
+   -------------------------------------------------- */
+.side-panel .port-calls {
+  margin: 12px 0;
+  list-style: disc inside;
+  color: #bbb;
+}
+.side-panel .port-calls li {
+  margin-bottom: 4px;
+}
+
+/* --------------------------------------------------
+   DATE FILTER
+   -------------------------------------------------- */
+.side-panel .date-filter {
+  margin-bottom: 20px;
+}
+
+/* --------------------------------------------------
+   BUTTON GROUP
+   -------------------------------------------------- */
+.side-panel .popup-button-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+.side-panel .btn-orange,
+.side-panel .btn-clear {
+  flex: 1;
+  padding: 10px 0;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.side-panel .btn-orange {
+  background-color: #ff6600;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(255, 102, 0, 0.3);
+}
+.side-panel .btn-orange:hover {
+  background-color: #e65c00;
+}
+.side-panel .btn-clear {
+  background-color: #333;
+  color: #fff;
+}
+.side-panel .btn-clear:hover {
+  background-color: #555;
+}
+
+/* --------------------------------------------------
+   LEFT DASHBOARD PANEL
+   -------------------------------------------------- */
+.left-dashboard-panel {
+  position: fixed;
+  top: 64px;                /* below header */
+  left: 0;
+  width: 320px;             /* slightly narrower than vessel panel */
+  height: calc(100% - 64px);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  z-index: 1000;
+  background: transparent;
+}
+
+/* Glass container for content */
+.left-dashboard-panel .glass-container {
+  flex: 1;
+  margin: 16px;
+  padding: 20px;
+  background: linear-gradient(
+    145deg,
+    rgba(10, 10, 20, 0.9),
+    rgba(20, 20, 30, 0.85)
+  );
+  border-radius: 16px;
+  border-right: 1px solid rgba(0, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  overflow-y: auto;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Section titles inside dashboard */
+.left-dashboard-panel .section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffaa33;
+  margin-bottom: 8px;
+}
+
+/* Stat blocks (e.g., vessel count, avg speed) */
+.left-dashboard-panel .stat-block {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.left-dashboard-panel .stat-label {
+  color: #ccc;
+  font-size: 14px;
+}
+.left-dashboard-panel .stat-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* Chart container */
+.left-dashboard-panel .chart-container {
+  margin: 16px 0;
+  background: rgba(0,0,0,0.2);
+  border-radius: 12px;
+  padding: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.left-dashboard-panel .line-chart { position: relative; z-index: 2; }
+.left-dashboard-panel .bar-chart  { position: relative; z-index: 1; }
+
+
+/* Scrollbar styling for better look */
+.left-dashboard-panel .glass-container::-webkit-scrollbar {
+  width: 6px;
+}
+.left-dashboard-panel .glass-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.left-dashboard-panel .glass-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+

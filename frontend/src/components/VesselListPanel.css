@@ -1,0 +1,50 @@
+.vessel-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.vessel-list input {
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.vessel-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.vessel-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 8px;
+}
+
+.vessel-list li img {
+  width: 60px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #222;
+}
+
+.vessel-list li div {
+  flex-grow: 1;
+}
+
+.vessel-list li button {
+  background: #00bcd4;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}

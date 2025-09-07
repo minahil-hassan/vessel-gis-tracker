@@ -1,0 +1,252 @@
+/* =========================================================
+   DashboardPanel.css (rewritten & consolidated)
+   - Scoped to .popup-glass .dashboard-panel
+   - Fixed chart overlap by adding .chart-card with min-height
+   - Removed global .line-chart/.bar-chart z-index rules
+   - Deduplicated conflicting selectors
+   ========================================================= */
+
+/* Base (no opinionated styling outside glass wrapper) */
+.dashboard-panel {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: inherit;
+}
+
+/* Only when inside the glass wrapper do we apply full layout */
+.popup-glass .dashboard-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+
+  /* Scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: #ffaa33 #222;
+}
+
+/* =======================
+   Headings
+   ======================= */
+.popup-glass .dashboard-panel h3 {
+  margin: 0 0 16px;
+  font-size: 18px;
+  color: #ffaa33;
+  border-bottom: 1px solid rgba(255, 170, 51, 0.3);
+  padding-bottom: 8px;
+}
+.popup-glass .dashboard-panel h4 {
+  margin: 16px 0 8px;
+  font-size: 16px;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 4px;
+}
+
+/* =======================
+   Controls
+   ======================= */
+.dc-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 8px 0 16px;
+}
+
+.dc-range span {
+  margin-right: 6px;
+  color: #ccc;
+}
+
+.dc-range select {
+  background: #222;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 4px 8px;
+  outline: none;
+}
+
+.dc-range select:focus {
+  border-color: rgba(37, 243, 255, 0.6);
+  box-shadow: 0 0 0 2px rgba(37, 243, 255, 0.15);
+}
+
+.dc-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #ccc;
+}
+
+/* =======================
+   Sections
+   ======================= */
+.dc-section {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.dc-section h4 {
+  margin: 12px 0 8px;
+  font-size: 14px;
+  color: #A7FFFB; /* neon-cyan */
+  letter-spacing: 0.3px;
+  padding-top: 10px;
+}
+
+/* =======================
+   Chart Card & Recharts
+   ======================= */
+/* Glassy chart card wrapper */
+.neon-glass {
+  position: relative;
+  background: linear-gradient(145deg, rgba(10, 12, 20, 0.75), rgba(14, 18, 28, 0.6));
+  backdrop-filter: blur(10px) saturate(120%);
+  border: 1px solid rgba(0, 255, 255, 0.18);
+  border-radius: 12px;
+  box-shadow:
+    0 0 0 1px rgba(0, 255, 255, 0.08) inset,
+    0 10px 30px rgba(0, 0, 0, 0.35),
+    0 0 24px rgba(37, 243, 255, 0.12);
+  padding: 10px 10px 12px;
+
+  /* Prevent glow/tooltip bleed covering following sections */
+  overflow: hidden;
+}
+
+/* Chart wrapper that ensures height so charts don't collapse/overlap */
+.chart-card {
+  display: block;
+  position: relative;
+  margin: 16px 0;
+  min-height: 260px; /* Adjust 260–320px as preferred */
+  border-radius: 12px;
+}
+
+/* Make Recharts fill its container */
+.chart-card .recharts-wrapper {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* =======================
+   Lists / HR / Footer
+   ======================= */
+.popup-glass .dashboard-panel ul {
+  list-style: none;
+  padding-left: 16px;
+  margin: 8px 0;
+}
+.popup-glass .dashboard-panel ul li {
+  margin: 4px 0;
+  color: #cccccc;
+  font-size: 14px;
+}
+
+.popup-glass .dashboard-panel hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 16px 0;
+}
+
+.popup-glass .dashboard-panel .timestamp {
+  margin-top: auto;
+  font-size: 12px;
+  color: #aaa;
+  text-align: right;
+}
+
+/* =======================
+   Trend Badge
+   ======================= */
+.trend-badge {
+  display: inline-block;
+  margin: 6px 0 10px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.trend-badge.up {
+  color: #2bd67b;
+  border-color: rgba(43, 214, 123, 0.3);
+}
+.trend-badge.down {
+  color: #ff756b;
+  border-color: rgba(255, 117, 107, 0.3);
+}
+
+/* =======================
+   Loading State
+   ======================= */
+.dashboard-loading {
+  padding: 16px;
+  color: #ccc;
+  font-size: 14px;
+}
+
+
+
+/* =======================
+   Dock Insights Panel
+   ======================= */
+.dock-insights {
+  padding-left: 12px;
+  font-size: 14px;
+  color: #ccc;
+  line-height: 1.4;
+}
+.dock-insights li {
+  margin-bottom: 6px;
+}
+.dock-insights strong {
+  color: #ffaa33;
+}
+
+
+
+/* ---- TopAreaFacilities ---- */
+.facilities-wrap {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+  margin: 8px 0 6px;
+}
+
+.facilities-card {
+  padding: 10px 12px;
+  border-radius: 12px;
+}
+
+.facilities-title {
+  font-weight: 600;
+  color: #ffaa33;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.facilities-list {
+  margin: 0;
+  padding-left: 18px;
+  color: #d8dfe7;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.facilities-list li {
+  margin: 2px 0;
+}
+
+.facilities-empty {
+  color: #a8b2bf;
+  font-size: 13px;
+}
+
+

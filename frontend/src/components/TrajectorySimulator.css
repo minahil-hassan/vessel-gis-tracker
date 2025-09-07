@@ -1,0 +1,31 @@
+/* Neon-styled simulation button placed at the start of trajectory */
+.sim-button-thin {
+  padding: 4px 10px;
+  background-color: rgba(0, 247, 255, 0.9);  /* neon cyan */
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transform: translate(-50%, -50%); /* center on map point */
+  white-space: nowrap;
+  box-shadow: 0 0 8px #00f7ff;
+  color: #001d2d;
+  user-select: none;
+  transition: background-color 0.2s ease;
+}
+
+.sim-button-thin:hover {
+  background-color: rgba(0, 247, 255, 1);
+}
+
+/* Custom ship marker icon (used for animation) */
+.ship-marker {
+  background-image: url('../assets/vessel.png');
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 32px;
+  height: 32px;
+  pointer-events: none; /* ensures marker doesn’t block map interactions */
+}

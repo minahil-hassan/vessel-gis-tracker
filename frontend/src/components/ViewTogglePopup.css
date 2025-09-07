@@ -1,0 +1,43 @@
+/* src/components/ViewTogglePopup.css */
+
+.view-toggle-backdrop {
+  position: absolute;
+  top: 4px;        /* below your .top-nav (adjust if your header is taller) */
+  left: 6px;       /* aligns to left‐panel edge */
+  width: 20px;     /* matches .left-panel width */
+  height: calc(100% - 64px);
+  z-index: 1100;
+  /* clicks outside the card will dismiss */
+}
+
+.view-toggle-popup {
+  margin: 16px;
+  padding: 16px;
+  background: linear-gradient(145deg, rgba(10,10,20,0.9), rgba(20,20,30,0.85));
+  border: 1px solid rgba(0,255,255,0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 150px;
+}
+
+.vt-btn {
+  padding: 4px 6px;
+  border: none;
+  border-radius: 6px;
+  background: #222;
+  color: #bbb;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.vt-btn.active {
+  background: #ffaa33;
+  color: #111;
+  font-weight: bold;
+}
+.vt-btn:not(.active):hover {
+  background: #333;
+  color: #fff;
+}

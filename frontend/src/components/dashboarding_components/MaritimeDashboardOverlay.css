@@ -1,0 +1,389 @@
+.dashboard-overlay {
+  position: absolute;
+  top: 64px;
+  left: 280px;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  overflow-y: auto;
+  padding: 32px;
+  color: #fff;
+
+  /* Match popup-glass glassmorphism */
+  background: linear-gradient(145deg, rgba(10, 10, 20, 0.9), rgba(20, 20, 30, 0.85));
+  border-left: 1px solid rgba(0, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-size: 24px;
+  color: #fff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.dashboard-close:hover {
+  color: #ffaa33;
+}
+
+.dashboard-content {
+  max-width: 100%;
+}
+
+.dashboard-title {
+  font-size: 26px;
+  font-weight: 600;
+  color: #ffaa33;
+  margin-bottom: 4px;
+}
+
+.dashboard-intro {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 20px;
+  max-width: 900px;
+}
+
+.dashboard-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+/* Toggle buttons (UK / Liverpool) */
+.toggle-buttons button,
+.dc-range select {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  background: #222;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  color: #00ffe7;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.toggle-buttons button.active {
+  background: rgba(0, 255, 255, 0.25);
+  border-color: #00ffe7;
+  color: #ffffff;
+}
+
+.toggle-buttons button:hover {
+  background: rgba(0, 255, 255, 0.1);
+}
+
+.dc-range {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #ccc;
+}
+
+.dc-range select:focus {
+  border-color: #00ffe7;
+  box-shadow: 0 0 0 2px rgba(0, 255, 255, 0.15);
+}
+
+.dashboard-loading {
+  font-size: 14px;
+  color: #aaa;
+  margin-top: 1rem;
+}
+
+
+/* MaritimeDashboardOverlay.css */
+.chart-placeholder {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px dashed rgba(0, 255, 255, 0.4);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 1rem 0;
+  text-align: center;
+  color: #0ff;
+  font-style: italic;
+}
+
+/*tiny css addition for dashboard placeholder cards */
+/* 2-up grid to place a chart next to a placeholder card */
+.chart-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 12px 0 24px;
+}
+
+/* Reuse .chart-card + .neon-glass from your theme; enhance placeholder internals */
+.chart-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+
+.chart-placeholder-inner {
+  width: 100%;
+  max-width: 520px;
+  text-align: center;
+}
+
+.ph-title {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #00ffe7;
+}
+
+.ph-subtitle {
+  margin: 0;
+  color: #a8b2bf;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.ph-content {
+  font-size: 13px;
+  color: #d7e1ec;
+}
+
+/* Container for each chart and its title */
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Space between title and chart */
+}
+
+/* Title styling */
+.chart-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fbf8f4; /* Match theme */
+  margin: 0; /* Remove default margin */
+  text-align: left; /* Align title to the left */
+}
+
+/* === PeakTrafficCard === */
+.peak-card { display: flex; flex-direction: column; padding: 12px; }
+.peak-card-header { margin-bottom: 6px; }
+
+.peak-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.kpi {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(145deg, rgba(10,12,20,0.55), rgba(18,22,28,0.45));
+  border-radius: 10px;
+  padding: 10px 12px;
+  border-left: 1px solid rgba(0,255,255,0.18);
+  box-shadow: 0 0 0 1px rgba(0,255,255,0.06) inset;
+}
+
+.kpi-icon { font-size: 18px; opacity: 0.9; }
+.kpi-title { font-size: 12px; text-transform: uppercase; color: #8efcff; letter-spacing: .4px; }
+.kpi-big { font-size: 18px; font-weight: 700; color: #fff; line-height: 1.1; }
+.kpi-sub { font-size: 12px; color: rgba(220,230,240,0.85); }
+
+.peak-bars {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.peak-bar-card {
+  background: linear-gradient(145deg, rgba(10,12,20,0.55), rgba(18,22,28,0.45));
+  border-radius: 10px;
+  padding: 10px 12px;
+  border-left: 1px solid rgba(0,255,255,0.18);
+  box-shadow: 0 0 0 1px rgba(0,255,255,0.06) inset;
+}
+
+.peak-bar-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #8efcff;
+  letter-spacing: .4px;
+  margin-bottom: 8px;
+}
+
+.peak-bar-row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  align-items: end;
+  height: 110px; /* fits inside 260px card */
+  gap: 2px;
+}
+
+.peak-bar-row .bar {
+  background: rgba(0, 255, 255, 0.25);
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px rgba(0, 255, 255, 0.08) inset;
+  transition: height .2s ease, background .2s ease;
+}
+.peak-bar-row .bar:hover {
+  background: rgba(0, 255, 255, 0.45);
+}
+.peak-bar-row .bar-active {
+  background: rgba(0, 255, 255, 0.85);
+  box-shadow:
+    0 0 0 1px rgba(0,255,255,0.5) inset,
+    0 0 18px rgba(0,255,255,0.35);
+}
+
+.peak-bar-xlabels {
+  display: flex;
+  justify-content: space-between;
+  color: rgba(220,230,240,0.75);
+  font-size: 11px;
+  margin-top: 6px;
+}
+
+/* responsive tweak */
+@media (max-width: 1100px) {
+  .peak-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .peak-bars { grid-template-columns: 1fr; }
+}
+
+
+/* Ensure grid items align to the top edge */
+.chart-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 12px 0 24px;
+  align-items: start;          /* NEW */
+}
+
+/* Make sure both column title blocks have identical spacing */
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-self: start;           /* NEW: guard against stretch */
+}
+
+.chart-title {
+  margin: 0 0 8px 0;           /* already set, just re-affirm */
+  line-height: 1.1;            /* consistent height across titles */
+}
+
+/* Give dc-chart the same skin as chart-card (in case some places don’t use chart-card) */
+.dc-chart {
+  background: linear-gradient(145deg, rgba(10,12,20,0.85), rgba(18,22,28,0.75));
+  border-radius: 12px;
+  padding: 12px;
+  border-left: 1px solid rgba(0, 255, 255, 0.18);
+  box-shadow: 0 0 0 1px rgba(0,255,255,0.06) inset;
+}
+
+
+
+/* === Insight LLM Card === */
+.insight-card { display: flex; flex-direction: column; padding: 12px; }
+.insight-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 6px; }
+.insight-title { margin: 0; font-size: 16px; font-weight: 600; color: #8efcff; }
+.insight-sub { font-size: 12px; color: rgba(0,255,255,0.75); }
+
+.insight-loading, .insight-error {
+  font-size: 13px; color: #a8b2bf; padding: 8px 0;
+}
+
+.insight-body { flex: 1; overflow: auto; }
+.insight-text {
+  white-space: pre-wrap;
+  color: #e9f6ff;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.insight-chips {
+  margin-top: 10px;
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+
+.insight-chip {
+  display: inline-flex; gap: 6px; align-items: center;
+  padding: 6px 8px;
+  background: linear-gradient(145deg, rgba(10,12,20,0.6), rgba(18,22,28,0.5));
+  border-radius: 999px;
+  border-left: 1px solid rgba(0,255,255,0.3);
+  box-shadow: 0 0 0 1px rgba(0,255,255,0.08) inset;
+  color: #d7e1ec;
+  font-size: 12px;
+}
+
+.chip-label { color: #8efcff; text-transform: uppercase; font-size: 11px; letter-spacing: .4px; }
+.chip-value { color: #fff; }
+
+/* --- Insight card refinements --- */
+.insight-card { display: flex; flex-direction: column; padding: 14px; }
+.insight-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 8px; }
+.insight-title { margin: 0; font-size: 16px; font-weight: 700; color: #8efcff; letter-spacing: .2px; }
+.insight-sub { font-size: 12px; color: rgba(0,255,255,0.75); }
+
+.insight-loading, .insight-error {
+  font-size: 13px; color: #a8b2bf; padding: 8px 0;
+}
+
+.insight-chips {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin: 2px 0 8px;
+}
+
+.insight-chip {
+  display: inline-flex; gap: 6px; align-items: center;
+  padding: 7px 10px;
+  background: linear-gradient(145deg, rgba(10,12,22,0.75), rgba(18,22,28,0.6));
+  border-radius: 999px;
+  border-left: 1px solid rgba(0,255,255,0.35);
+  box-shadow: 0 0 0 1px rgba(0,255,255,0.08) inset;
+  color: #d7e1ec;
+  font-size: 12px;
+}
+
+.chip-label { color: #8efcff; text-transform: uppercase; font-size: 11px; letter-spacing: .4px; }
+.chip-value { color: #ffffff; }
+
+/* subtle neon divider */
+.insight-divider {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(0,255,255,0) 0%, rgba(0,255,255,0.35) 50%, rgba(0,255,255,0) 100%);
+  margin: 6px 0 10px;
+  box-shadow: 0 0 8px rgba(0,255,255,0.15);
+}
+
+.insight-body { flex: 1; overflow: auto; }
+
+/* well-spaced neon prose */
+.prose-neon p {
+  margin: 0 0 10px 0;
+  color: #e9f6ff;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.prose-neon p strong {
+  color: #00ffe7;
+  font-weight: 800;
+  text-shadow: 0 0 6px rgba(0,255,255,0.25);
+}
+
+
+

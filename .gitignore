@@ -1,0 +1,28 @@
+# Node.js dependencies
+node_modules/
+
+# Build output
+build/
+dist/
+
+# Python virtual environment (if used for backend)
+venv/
+
+# Local data, cache, or temp files
+data/
+*.log
+
+# Environment variables
+.env
+.env.local
+
+# Lockfiles
+yarn.lock
+
+# Editor settings
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+node_modules

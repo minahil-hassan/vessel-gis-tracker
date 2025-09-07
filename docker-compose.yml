@@ -1,0 +1,64 @@
+version: "3.9"
+
+services:
+  mongo:
+    image: mongo:6
+    container_name: mongo
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_DATABASE: ${MONGO_DB:-metaliverpool-intern}
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.runCommand({ ping: 1 })"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    image: my-backend:latest
+    container_name: api
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      PYTHONPATH: /app/src
+    ports:
+      - "8000:8000"
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+  collector:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    image: my-backend:latest
+    container_name: collector
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      PYTHONPATH: /app/src
+    command: ["python", "ais_stream_runner.py"]
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.frontend
+    image: my-frontend:latest
+    container_name: frontend
+    restart: unless-stopped
+    depends_on:
+      - api
+    ports:
+      - "3000:80"
+
+volumes:
+  mongo_data:

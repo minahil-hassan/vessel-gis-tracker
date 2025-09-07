@@ -1,0 +1,70 @@
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.summary-card {
+  background: linear-gradient(145deg, rgba(10, 12, 20, 0.85), rgba(18, 22, 28, 0.75));
+  backdrop-filter: blur(10px) saturate(140%);
+  border-radius: 12px;
+  padding: 16px;
+  border-left: 1px solid rgba(0, 255, 255, 0.2);
+  box-shadow:
+    0 0 0 1px rgba(0, 255, 255, 0.08) inset,
+    0 10px 30px rgba(0, 0, 0, 0.4),
+    0 0 24px rgba(0, 255, 255, 0.1);
+  color: #fff;
+  position: relative;
+  overflow: visible; /* Ensure tooltip is not clipped */
+  z-index: 1; /* Ensure tooltip appears above other elements */
+  transition: all 0.3s ease;
+}
+
+.summary-card:hover {
+  box-shadow:
+    0 0 0 1px rgba(0, 255, 255, 0.12) inset,
+    0 12px 28px rgba(0, 255, 255, 0.08),
+    0 0 32px rgba(0, 255, 255, 0.3);
+}
+
+.summary-card h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #00ffe7;
+  margin: 0 0 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.summary-card p {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.mini-sparkline {
+  margin-top: 10px;
+  height: 60px;
+}
+
+.tooltip-container {
+  background-color: rgba(10, 12, 20, 0.85); /* Match theme */
+  border: 1px solid #00ffe7; /* Neon-style border */
+  border-radius: 6px;
+  padding: 8px;
+  color: #fff;
+  font-size: 12px;
+}
+
+.tooltip-title {
+  font-weight: 600;
+  color: #00ffe7;
+}
+
+.tooltip-value {
+  font-weight: 400;
+  color: #fff;
+}
